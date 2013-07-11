@@ -1,0 +1,15 @@
+function md() {
+	mkdir -p "$@" && cd "$@"
+}
+
+function server() {
+	local port="${1:-8000}"
+	http-server -p $port
+}
+
+
+#Take this repo and copy it somewhere else, minus the .git stuff
+function gitexport(){
+	mkdir -p "$1"
+	git archive master | tar -x -C "$1"
+}
